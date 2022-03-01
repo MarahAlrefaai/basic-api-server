@@ -19,11 +19,9 @@ let userId ;
   }); 
 describe('test',()=>{
 
-
-
 it ('post test', async () => {
   const response = await request.post('/clothes').send({
-    price: "20",
+    price: "lar",
       size : "large"
   });
   expect(response.status).toBe(201);
@@ -44,8 +42,8 @@ it ('get by id test',async()=>{
 
 it ('update test', async () => {
 const response = await request.put(`/clothes/${userId}`).send({
-  price: "20",
-  size : "38"
+  price: "lar",
+  size : "lar"
 })
 expect(response.status).toBe(201);
 })
@@ -66,7 +64,7 @@ describe('test',()=>{
 it ('post test', async () => {
   const response = await request.post('/food').send({
     name:"falafel",
-  price : "30"
+  price : "th"
   });
   expect(response.status).toBe(201);
     userId = response.body.id
@@ -87,7 +85,7 @@ it ('get by id test',async()=>{
 it ('update test', async () => {
 const response = await request.put(`/food/${userId}`).send({
   name:"falafel",
-  price : "30"
+  price : "th"
 })
 expect(response.status).toBe(201);
 })
