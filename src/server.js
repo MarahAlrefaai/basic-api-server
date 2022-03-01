@@ -6,8 +6,9 @@ const logger=require('./middleware/logger.js');
 const validator=require('./middleware/validator.js');
 const errorHandler = require('./error-handlers/500.js')
 const notFound = require('./error-handlers/404.js')
-const clothesRouter = require('./routes/clothes');
-const foodRouter = require('./routes/food.js')
+
+const clothesRouter = require('./routes/clothes');//get routes 
+const foodRouter = require('./routes/food.js');//get routes
 
 //----------------------------------------------
 
@@ -17,13 +18,13 @@ app.use(logger);
 app.use(validator);
 app.use(clothesRouter);
 app.use(foodRouter);
+
 //----------------------------------------------
 app.get('/',(req,res)=>{//this is a rout
   //res.json({method : req.reqType, });
   res.send('home route');
 })
 app.get('/person',validator, (req,res)=>{
-
   res.status(200).json({
     name : req.name
   });})
