@@ -92,7 +92,7 @@ const response = await request.put(`/food/${userId}`).send({
 expect(response.status).toBe(201);
 })
 it ('deleting by id test',async()=>{
-const response = await request.delete(`/clothes/${userId}`)
+const response = await request.delete(`/food/${userId}`)
 expect(response.status).toBe(204)
 
 })
