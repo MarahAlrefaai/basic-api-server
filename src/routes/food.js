@@ -13,7 +13,7 @@ router.get('/food',getfood);
 router.post('/food',createfood);
 router.get('/food/:id',getOnefood);
 router.delete('/food/:id',deletefood);
-router.put('/food/:id',updatedfood)
+router.put('/food/:id',updatedfood);
 // localhost:3000/food
 async function getfood(req,res) {
     let allfood = await food.findAll();//get model that we impot it from index.js

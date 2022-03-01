@@ -1,7 +1,7 @@
 'use strict';
-//this is a table (clothes model) to store data in(json data)
+//this is a table (food model) to store data in(json data)
 //sequelize, DataTypes  are parameters 
-//clothes name of the table  
+//food name of the table  
 
 const food = (sequelize, DataTypes) => sequelize.define('food', {
 

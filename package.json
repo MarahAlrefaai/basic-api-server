@@ -4,8 +4,8 @@
   "description": "Dynamic API Phase 2: Perform CRUD Operations on a database Phase 2 Requirements Build a REST API using Express, by creating a proper series of endpoints that perform CRUD operations on a database, using the REST standard",
   "main": "index.js",
   "scripts": {
-    "test": "jest --coverage --verbose",
-    "start": "node index.js"
+    "start": "NODE_ENV=production node index.js",
+    "test": "NODE_ENV=test jest"
   },
   "repository": {
     "type": "git",
@@ -25,6 +25,7 @@
     "pg": "^8.7.3",
     "psql": "^0.0.1",
     "sequelize": "^6.17.0",
+    "sqlite3": "^5.0.2",
     "supertest": "^6.2.2"
   },
   "devDependencies": {

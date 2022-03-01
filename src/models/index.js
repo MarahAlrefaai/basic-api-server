@@ -9,10 +9,19 @@ const {Sequelize, DataTypes} = require('sequelize'); // npm i pg sequelize
 //after creating the models we must require( import it after export it )
 const clothes = require('./clothes.js');
 const food = require('./food.js');
-
 //------------------------------------
 //prepare the connection
-const POSTGRES_URL = process.env.DATABASE_URL || "postgres://marah:0000@localhost:5432/seqdataadv";
+
+const POSTGRES_URL = process.env.NODE_ENV === 'test' ? 'sqlite:memory:' : process.env.DATABASE_URL; // npm i sqlite3
+
+let sequelizeOptions = process.env.NODE_ENV === 'production' ? {
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
+    }
+  }
+} : {};
 
 //if we didn't add in the gethub there is no .env  there
 //this is the linke syored in .env (include our password and email)
@@ -24,15 +33,6 @@ const POSTGRES_URL = process.env.DATABASE_URL || "postgres://marah:0000@localhos
 
 //sequelizeOptions to deploy the app on heroku
 
-let sequelizeOptions =  {
-  dialectOptions: {
-    ssl: {
-      require: true,
-      rejectUnauthorized: false,
-    }
-  }
-
-}
 //real connecting the sequelize with DATABASE_URL(database url )
 let sequelize = new Sequelize(POSTGRES_URL,sequelizeOptions);
 
@@ -45,6 +45,3 @@ module.exports = {
   food: food(sequelize,DataTypes)// for creating the table and will use it in our routes
 
 }
-
-
-
