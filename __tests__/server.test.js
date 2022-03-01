@@ -11,13 +11,14 @@ let userId ;
 /*make sure to edit ("scripts": {
     "test": "jest --coverage --verbose",)*/
 
+    beforeAll(async () => {
+      await db.sync();
+  });
+  afterAll(async () => {
+      await db.drop();
+  }); 
 describe('test',()=>{
-  beforeAll(async () => {
-    await db.sync();
-});
-afterAll(async () => {
-    await db.drop();
-});
+
 
 
 it ('post test', async () => {
@@ -59,12 +60,7 @@ expect(response.status).toBe(204)
 //testing for food
 
 describe('test',()=>{
-  beforeAll(async () => {
-    await db.sync();
-});
-afterAll(async () => {
-    await db.drop();
-});
+
 
 
 it ('post test', async () => {
@@ -96,7 +92,7 @@ const response = await request.put(`/food/${userId}`).send({
 expect(response.status).toBe(201);
 })
 it ('deleting by id test',async()=>{
-const response = await request.delete(`/clothes/${userId}`)
+const response = await request.delete(`/food/${userId}`)
 expect(response.status).toBe(204)
 
 })
